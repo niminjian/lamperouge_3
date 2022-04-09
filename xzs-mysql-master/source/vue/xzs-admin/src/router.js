@@ -88,14 +88,16 @@ const constantRoutes = [  //存放不需要动态判断权限的路由
         path: 'paper/list',
         component: () => import('@/views/exam/paper/list'),
         name: 'ExamPaperPageList',
-        meta: { title: '试卷列表', noCache: true }
+        meta: { title: '试卷列表', noCache: true },
       },
+      
       {
         path: 'paper/edit',
         component: () => import('@/views/exam/paper/edit'),
         name: 'ExamPaperEdit',
         meta: { title: '试卷编辑', noCache: true, activeMenu: '/exam/paper/list' },
-        hidden: true
+        hidden: true,
+        
       },
       {
         path: 'question/list',
@@ -229,32 +231,7 @@ const constantRoutes = [  //存放不需要动态判断权限的路由
       }
     ]
   },
-  //结果统计
-  {
-    path: '/result',
-    component: Layout,
-    name: 'ResultPage',
-    meta: {
-      title: '结果统计',
-      icon: 'eye-open'
-    },
-    alwaysShow: true,
-    children: [
-      {
-        path: 'invigilator/statics',
-        component: () => import('@/views/result/invigilatorStatics/list'),
-        name: 'InvigilatorStatisticsPage',
-        meta: { title: '监考情况统计', noCache: true }
-      },
-      {
-        path: 'testresult/statics',
-        component: () => import('@/views/result/testResult/list'),
-        name: 'TestResultStatisticsPage',
-        meta: { title: '考试结果统计', noCache: true }
-      }
-    ]
-  },
-  //个人信息
+   //个人信息
   {
     path: '/profile',
     component: Layout,
@@ -272,7 +249,48 @@ const constantRoutes = [  //存放不需要动态判断权限的路由
     hidden: true,
     component: () => import('@/views/error-page/404'),  //@是从src目录开始的
     meta: { title: '404', noCache: true }
-  }
+  },
+  //结果统计
+  {
+    path: '/result',
+    component: Layout,
+    name: 'ResultPage',
+    meta: {
+      title: '结果统计',
+      icon: 'eye-open'
+    },
+    alwaysShow: true,
+    children: [
+      // {
+      //   path: 'invigilator/statics',
+      //   component: () => import('@/views/result/invigilatorStatics/list'),
+      //   name: 'InvigilatorStatisticsPage',
+      //   meta: { title: '考试结果统计', noCache: true }
+      // },
+      
+      {
+        path: '/exam/paper/list/10',
+        component: () => import('@/views/result/invigilatorStatics/list10'),
+        name: 'InvigilatorStatisticsPage',
+        meta: { title: '试卷列表', noCache: true },
+      },
+       {
+        path: '/exam/paper/list/9',
+        component: () => import('@/views/result/invigilatorStatics/list9'),
+        name: 'InvigilatorStatisticsPage',
+        meta: { title: '试卷列表', noCache: true },
+      },
+      // ,
+      // {
+      //   path: 'testresult/statics',
+      //   component: () => import('@/views/result/testResult/list'),
+      //   name: 'TestResultStatisticsPage',
+      //   meta: { title: '考试结果统计', noCache: true }
+      // }
+      
+    ]
+  },
+ 
 ]
 
 const router = new Router({

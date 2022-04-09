@@ -74,7 +74,7 @@
         </el-card>
       </el-col>
       <el-col :span="7">
-        <el-card>
+        <el-card class="cardmy">
           <div slot="header" class="clearfix">
             <span>个人信息</span>
           </div>
@@ -108,6 +108,8 @@
             <label>注册时间：{{ form.createTime }}</label
             ><br />
           </el-row>
+          <h4>我的能力</h4>
+          <div id="main02" style="width: 400px; height: 400px"></div>
         </el-card>
       </el-col>
     </el-row>
@@ -117,7 +119,7 @@
 <script>
 import userApi from "@/api/user";
 import { mapGetters, mapState } from "vuex";
-
+import * as echarts from "echarts";
 export default {
   data() {
     return {
@@ -143,6 +145,52 @@ export default {
         ],
       },
     };
+  },
+  mounted() {
+    var myChart02 = echarts.init(document.getElementById("main02"));
+    myChart02.setOption({
+      toolbox: {
+        show: true,
+        feature: {
+          saveAsImage: { show: true },
+        },
+      },
+    
+      legend: {
+        data: ["平均能力", "我的能力"],
+      },
+      radar: {
+        // shape: 'circle',
+        indicator: [
+          { name: "语文", max: 100 },
+          { name: "数学", max: 100 },
+          { name: "英语", max: 100 },
+          { name: "政治", max: 100 },
+          { name: "历史", max: 100 },
+          { name: "地理", max: 100 },
+          { name: "物理", max: 100 },
+          { name: "化学", max: 100 },
+          { name: "生物", max: 100 },
+          { name: "技术", max: 100 },
+        ],
+      },
+      series: [
+        {
+          name: "Budget vs spending",
+          type: "radar",
+          data: [
+            {
+              value: [85, 75, 90, 80, 80, 80, 80, 80, 80, 80],
+              name: "平均能力",
+            },
+            {
+              value: [80, 100, 85, 70, 70, 75, 95, 90, 90, 97],
+              name: "我的能力",
+            },
+          ],
+        },
+      ],
+    });
   },
   created() {
     let _this = this;
@@ -199,4 +247,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.cardmy{
+  width: 425px ;
+}
+
 </style>

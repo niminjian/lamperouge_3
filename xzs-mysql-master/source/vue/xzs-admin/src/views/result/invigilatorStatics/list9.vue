@@ -12,24 +12,24 @@
 <script>
 import * as echarts from "echarts";
 export default {
-  name: "list",
+  name: "list9",
   mounted() {
     var myChart01 = echarts.init(document.getElementById("main01"));
     // 绘制图表
     myChart01.setOption({
       title: {
-        text: "题型完成所需时间",
+        text: "考试成绩分布情况",
       },
       tooltip: {},
       xAxis: {
-        data: ["选择题", "填空题", "第一部分", "第二部分", "附加题"],
+        data: ["90+", "80~90", "70~80", "60~70", "不及格"],
       },
       yAxis: {},
       series: [
         {
-          name: "时间",
+          name: "分数",
           type: "bar",
-          data: [15, 30, 30, 35, 10],
+          data: [40, 30, 20, 10, 5],
         },
       ],
     });
