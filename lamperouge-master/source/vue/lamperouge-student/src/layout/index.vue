@@ -43,6 +43,7 @@
         active-text-color="#fb7299"
       >
         <el-menu-item index="/index">首页</el-menu-item>
+        <el-menu-item index="/auto/index">智能组卷</el-menu-item>
         <el-menu-item index="/paper/index">试卷中心</el-menu-item>
         <el-menu-item index="/record/index">考试记录</el-menu-item>
         <el-menu-item index="/question/index">错题本</el-menu-item>

@@ -20,6 +20,11 @@
                 </el-timeline>
               </div>
             </el-tab-pane>
+
+            <el-tab-pane label="专业书籍总览" name="coarseBook">
+              <div id="main04" style="width: 700px; height: 700px"></div>
+            </el-tab-pane>
+
             <el-tab-pane label="个人资料修改" name="update">
               <el-form
                 :model="form"
@@ -67,7 +72,7 @@
                 </el-form-item>
                 <el-form-item>
                   <el-button type="primary" @click="submitForm">更新</el-button>
-                  <el-button type="primary"  @click="faceLogin">人脸验证</el-button>
+                  <el-button type="primary"  @click="faceLogin">人脸采集</el-button>
                 </el-form-item>
               </el-form>
             </el-tab-pane>
@@ -192,6 +197,388 @@ export default {
         },
       ],
     });
+
+    var myChart04 = echarts.init(document.getElementById("main04"));
+    const colors = ['#ff5770', '#FF7853', '#c21111', '#CC3F57', '#9A2555'];
+    const bgColor = '#fdfcfd';
+    const itemStyle = {
+      star5: {
+        color: colors[0]
+      },
+      star4: {
+        color: colors[1]
+      },
+      star3: {
+        color: colors[2]
+      },
+      star2: {
+        color: colors[3]
+      }
+    };
+    const data = [
+      {
+        name: '应用',
+        itemStyle: {
+          color: colors[1]
+        },
+        children: [
+          {
+            name: '前端',
+            children: [
+              {
+                name: '5☆',
+                children: [
+                  {
+                    name: 'JavaScript高级程序设计'
+                  },
+                  {
+                    name: 'Vue实战'
+                  },
+                  {
+                    name: 'JavaScript权威指南'
+                  }
+                ]
+              },
+              {
+                name: '4☆',
+                children: [
+                  {
+                    name: 'ES6标准入门'
+                  },
+                  {
+                    name: 'JavaScript编程实战'
+                  },
+                  {
+                    name: 'JavaScript基础教程'
+                  }
+                ]
+              },
+              {
+                name: '3☆',
+                children: [
+                  {
+                    name: 'JavaScript快速开发'
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            name: '后端',
+            children: [
+              {
+                name: '5☆',
+                children: [
+                  {
+                    name: 'Java核心技术'
+                  }
+                ]
+              },
+              {
+                name: '4☆',
+                children: [
+                  {
+                    name: 'Java编程思想'
+                  },
+                  {
+                    name: '深入理解Java虚拟机'
+                  }
+                ]
+              },
+              {
+                name: '3☆',
+                children: [
+                  {
+                    name: '垃圾回收算法与实践'
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: '原理',
+        itemStyle: {
+          color: colors[2]
+        },
+        children: [
+          {
+            name: '计算机网络',
+            children: [
+              {
+                name: '5☆',
+                children: [
+                  {
+                    name: '网络是怎么连接的'
+                  }
+                ]
+              },
+              {
+                name: '4☆',
+                children: [
+                  {
+                    name: '计算机网络：自顶向下'
+                  },
+                  {
+                    name: '图解 TCP/IP'
+                  }
+                ]
+              },
+              {
+                name: '3☆',
+                children: [
+                  {
+                    name: '计算机网络-自顶向下'
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            name: '操作系统',
+            children: [
+              {
+                name: '5☆',
+                children: [
+                  {
+                    name: '实用操作系统概念'
+                  }
+                ]
+              },
+              {
+                name: '4☆',
+                children: [
+                  {
+                    name: '操作系统概念'
+                  },
+                  {
+                    name: '操作系统：现代观点'
+                  },
+                  {
+                    name: '现代操作系统'
+                  }
+                ]
+              },
+              {
+                name: '3☆',
+                children: [
+                  {
+                    name: 'Linux 内核情景分析'
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            name: '计算机组成',
+            children: [
+              {
+                name: '5☆',
+                children: [
+                  {
+                    name: '计算机组成原理'
+                  }
+                ]
+              },
+              {
+                name: '4☆',
+                children: [
+                  {
+                    name: '信息简史'
+                  },
+                  {
+                    name: '人工智能简史'
+                  }
+                ]
+              },
+              {
+                name: '3☆'
+              },
+              {
+                name: '2☆',
+                children: [
+                  {
+                    name: '黑客与画家'
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            name: '计算机系统',
+            children: [
+              {
+                name: '5☆',
+                children: [
+                  {
+                    name: '计算机系统原理'
+                  }
+                ]
+              },
+              {
+                name: '4☆',
+                children: [
+                  {
+                    name: '编译原理'
+                  },
+                  {
+                    name: '深入理解计算机系统'
+                  }
+                ]
+              },
+              {
+                name: '3☆',
+                children: [
+                  {
+                    name: '设计模式'
+                  }
+                ]
+              }
+            ]
+          },
+        ]
+      }
+    ];
+    for (let j = 0; j < data.length; ++j) {
+      let level1 = data[j].children;
+      for (let i = 0; i < level1.length; ++i) {
+        let block = level1[i].children;
+        let bookScore = [];
+        let bookScoreId;
+        for (let star = 0; star < block.length; ++star) {
+          let style = (function (name) {
+            switch (name) {
+              case '5☆':
+                bookScoreId = 0;
+                return itemStyle.star5;
+              case '4☆':
+                bookScoreId = 1;
+                return itemStyle.star4;
+              case '3☆':
+                bookScoreId = 2;
+                return itemStyle.star3;
+              case '2☆':
+                bookScoreId = 3;
+                return itemStyle.star2;
+            }
+          })(block[star].name);
+          block[star].label = {
+            color: style.color,
+            downplay: {
+              opacity: 0.5
+            }
+          };
+          if (block[star].children) {
+            style = {
+              opacity: 1,
+              color: style.color
+            };
+            block[star].children.forEach(function (book) {
+              book.value = 1;
+              book.itemStyle = style;
+              book.label = {
+                color: style.color
+              };
+              let value = 1;
+              if (bookScoreId === 0 || bookScoreId === 3) {
+                value = 5;
+              }
+              if (bookScore[bookScoreId]) {
+                bookScore[bookScoreId].value += value;
+              } else {
+                bookScore[bookScoreId] = {
+                  color: colors[bookScoreId],
+                  value: value
+                };
+              }
+            });
+          }
+        }
+        level1[i].itemStyle = {
+          color: data[j].itemStyle.color
+        };
+      }
+    }
+    myChart04.setOption( {
+      toolbox: {
+        show: true,
+        feature: {
+          saveAsImage: { show: true },
+        },
+      },
+      backgroundColor: bgColor,
+      color: colors,
+      series: [
+        {
+          type: 'sunburst',
+          center: ['50%', '48%'],
+          data: data,
+          sort: function (a, b) {
+            if (a.depth === 1) {
+              return b.getValue() - a.getValue();
+            } else {
+              return a.dataIndex - b.dataIndex;
+            }
+          },
+          label: {
+            rotate: 'radial',
+            color: bgColor
+          },
+          itemStyle: {
+            borderColor: '#FFFF',
+            borderWidth: 2
+          },
+          levels: [
+            {},
+            {
+              r0: 0,
+              r: 40,
+              label: {
+                rotate: 0
+              }
+            },
+            {
+              r0: 40,
+              r: 105
+            },
+            {
+              r0: 115,
+              r: 140,
+              itemStyle: {
+                shadowBlur: 2,
+                shadowColor: colors[2],
+                color: 'transparent'
+              },
+              label: {
+                rotate: 'tangential',
+                fontSize: 10,
+                color: colors[0]
+              }
+            },
+            {
+              r0: 140,
+              r: 145,
+              itemStyle: {
+                shadowBlur: 80,
+                shadowColor: colors[0]
+              },
+              label: {
+                position: 'outside',
+                textShadowBlur: 5,
+                textShadowColor: '#333'
+              },
+              downplay: {
+                label: {
+                  opacity: 0.5
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+    )
   },
   created() {
     let _this = this;

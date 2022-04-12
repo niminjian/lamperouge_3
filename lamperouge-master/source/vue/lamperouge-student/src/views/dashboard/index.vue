@@ -55,7 +55,7 @@
                     :to="{ path: '/do', query: { id: paperItem.examPaperId } }"
                     v-if="paperItem.status === null"
                   >
-                    <el-button type="text" size="small">开始答题</el-button>
+                    <el-button type="text" size="small" @click="faceLogin()">开始答题</el-button>
                   </router-link>
                   <router-link
                     target="_blank"
@@ -152,6 +152,9 @@ export default {
     },
     statusTextFormatter(status) {
       return this.enumFormat(this.statusEnum, status);
+    },
+    faceLogin() {
+      window.location.href = "http://localhost:8000/demo";
     },
   },
   computed: {
