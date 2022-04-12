@@ -3,7 +3,7 @@
     <div class="layui-col-xs7 layui-col-md-offset3" align="center">
         <div style="background-color: rgba(255,255,255,0.4);width: 500px;padding: 20px">
         <div style="margin: auto;width: 500px;height: 30px;text-align:center;line-height:30px;font-size: 30px;font-weight: bold; color: #000000">
-            人脸识别登录
+            人脸识别
         </div>
 
         <div id="regcoDiv">

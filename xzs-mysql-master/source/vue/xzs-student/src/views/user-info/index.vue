@@ -67,6 +67,7 @@
                 </el-form-item>
                 <el-form-item>
                   <el-button type="primary" @click="submitForm">更新</el-button>
+                  <el-button type="primary"  @click="faceLogin">人脸验证</el-button>
                 </el-form-item>
               </el-form>
             </el-tab-pane>
@@ -234,6 +235,9 @@ export default {
     },
     levelFormatter(level) {
       return this.enumFormat(this.levelEnum, level);
+    },
+    faceLogin() {
+      window.location.href = "http://localhost:8000/demo";
     },
   },
   computed: {

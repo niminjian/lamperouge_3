@@ -68,7 +68,7 @@
         type="primary"
         style="width: 100%; margin-bottom: 30px; margin-left: 0px"
         @click="faceLogin"
-        >人脸识别系统</el-button
+        >人脸信息采集</el-button
       >
     </el-form>
 

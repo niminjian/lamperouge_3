@@ -12,8 +12,8 @@
 <body style="height: 750px;width: auto;  background-image:url('images/bg.jpg')">
 <div class="layui-tab" style="width: 92%">
     <ul class="layui-tab-title" style="width: 18%">
-        <li class="layui-this">人脸注册</li>
-        <li>人脸登录</li>
+        <li class="layui-this">人脸信息采集</li>
+        <li>人脸识别</li>
     </ul>
   <div style="position: absolute;margin-left: 40px" >
       <style type="text/css">
