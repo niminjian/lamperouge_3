@@ -1,7 +1,0 @@
-{
-  "desc": "Lamperouge系统小程序",
-  "rules": [{
-  "action": "allow",
-  "page": "*"
-  }]
-}
